@@ -67,6 +67,16 @@ module top(clk,reset);
   wire [63:0] ID_EX_ALU;
   
   
+  // EX_MEM
+  
+  wire [4:0] EX_MEM_rd;
+  wire [63:0] EX_MEM_mux_ForwardB;
+  wire [63:0] EX_MEM_mux_ALU;
+  wire EX_MEM_ALUzero;
+  wire [63:0] EX_MEM_adder2out;
+  wire EX_MEM_Branch, EX_MEM_MemRead, EX_MEM_MemWrite, EX_MEM_RegWrite, EX_MEM_MemtoReg;
+  
+  
   
   
   
