@@ -74,6 +74,7 @@ module top(clk,reset);
   wire [63:0] EX_MEM_mux_ALU;
   wire EX_MEM_ALUzero;
   wire [63:0] EX_MEM_adder2out;
+  wire [63:0] EX_MEM_readData;
   wire EX_MEM_Branch, EX_MEM_MemRead, EX_MEM_MemWrite, EX_MEM_RegWrite, EX_MEM_MemtoReg;
   
   
@@ -155,6 +156,8 @@ module top(clk,reset);
   EX_MEM reg3 (clk, reset, 
               ID_EX_rd, ID_EX_mux_ForwardB, ID_EX_mux_ALU, ID_EX_ALUzero, adder2out, ID_EX_Branch, ID_EX_MemRead, ID_EX_MemWrite, ID_EX_RegWrite, ID_EX_MemtoReg,
               EX_MEM_rd, EX_MEM_mux_ForwardB, EX_MEM_mux_ALU, EX_MEM_ALUzero, EX_MEM_adder2out, EX_MEM_Branch, EX_MEM_MemRead, EX_MEM_MemWrite, EX_MEM_RegWrite, EX_MEM_MemtoReg);
+  
+  Data_Memory dm1(clk, EX_MEM_mux_ALU, EX_MEM_mux_ForwardB,  EX_MEM_MemWrite, EX_MEM_MemRead, EX_MEM_readData);
   
 endmodule
 
