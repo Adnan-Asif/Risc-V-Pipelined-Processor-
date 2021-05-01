@@ -8,16 +8,15 @@ module IF_ID(clk,reset,PC_Out, Instruction, IF_ID_Inst, IF_ID_PC_Out);
   
   always @( reset or posedge clk) 
     begin
-      if (clk):
-        begin
-          IF_ID_Inst=Instruction;
-          IF_ID_PC_Out=PC_Out;
-          
-        end
-      else if (reset)
+      if (reset):
         begin
           IF_ID_Inst=Instruction=0;
           IF_ID_PC_Out=PC_Out=0;
+        end
+      else if (clk)
+        begin
+          IF_ID_Inst=Instruction;
+          IF_ID_PC_Out=PC_Out;
         end
       
     
