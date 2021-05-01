@@ -170,6 +170,8 @@ module top(clk,reset);
                EX_MEM_rd, EX_MEM_mux_ALU, EX_MEM_readData, EX_MEM_RegWrite, EX_MEM_MemtoReg,
               MEM_WB_rd, MEM_WB_mux_ALU, MEM_WB_readData, MEM_WB_RegWrite, MEM_WB_MemtoReg);
   
+  MUX xd (MEM_WB_mux_ALU, MEM_WB_readData, MEM_WB_MemtoReg, MEM_WB_mux);
+  
 endmodule
 
   
