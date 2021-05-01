@@ -77,6 +77,16 @@ module top(clk,reset);
   wire [63:0] EX_MEM_readData;
   wire EX_MEM_Branch, EX_MEM_MemRead, EX_MEM_MemWrite, EX_MEM_RegWrite, EX_MEM_MemtoReg;
   
+  // MEM_WB
+  
+ wire [4:0] MEM_WB_rd;
+ wire [63:0] MEM_WB_mux_ALU;
+ wire [63:0] MEM_WB_readData;
+ wire MEM_WB_RegWrite;			
+ wire MEM_WB_MemtoReg;				
+ wire [63:0] MEM_WB_mux;
+
+  
   
   
   
@@ -142,9 +152,6 @@ module top(clk,reset);
   MUX_4 forward_A(ID_EX_ReadData1,MEM_WB_mux,EX_MEM_Alu,64'd0,ForwardA, ID_EX_mux_ForwardA); //refer to chat for variable names
   
   
- 
-  
-  
   MUX_4 forward_B
   (ID_EX_ReadData2, MEM_WB_mux, EX_MEM_Alu,64'd0,ForwardB, ID_EX_mux_ForwardB); //refer to chat for variable names
   
@@ -158,6 +165,10 @@ module top(clk,reset);
               EX_MEM_rd, EX_MEM_mux_ForwardB, EX_MEM_mux_ALU, EX_MEM_ALUzero, EX_MEM_adder2out, EX_MEM_Branch, EX_MEM_MemRead, EX_MEM_MemWrite, EX_MEM_RegWrite, EX_MEM_MemtoReg);
   
   Data_Memory dm1(clk, EX_MEM_mux_ALU, EX_MEM_mux_ForwardB,  EX_MEM_MemWrite, EX_MEM_MemRead, EX_MEM_readData);
+  
+  MEM_WB reg4 (clk, reset,
+               EX_MEM_rd, EX_MEM_mux_ALU, EX_MEM_readData, EX_MEM_RegWrite, EX_MEM_MemtoReg,
+              MEM_WB_rd, MEM_WB_mux_ALU, MEM_WB_readData, MEM_WB_RegWrite, MEM_WB_MemtoReg);
   
 endmodule
 
