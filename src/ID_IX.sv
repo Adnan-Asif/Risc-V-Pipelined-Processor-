@@ -40,7 +40,25 @@ module ID_IX(clk,reset,IF_ID_Inst, IF_ID_rs1,IF_ID_rs2, IF_ID_rd,  IF_ID_PC_Out,
   
   always @(reset or posedge clk)
     begin
-      if (clk) 
+      if (reset) 
+        begin
+           ID_EX_Inst=0;
+            ID_EX_rs1=0;
+            ID_EX_rs2=0;
+            ID_EX_imm_data=0;
+            ID_EX_ReadData2=0;
+            ID_EX_ReadData1=0;
+            ID_EX_PC_Out=0;
+            ID_EX_ALUsrc=0;
+            ID_EX_ALUop=0;
+            ID_EX_Branch=0;
+            ID_EX_MemRead=0;
+            ID_EX_MemWrite=0;
+            ID_EX_RegWrite=0;
+            ID_EX_MemtoReg=0; 
+          
+        end
+      else if (clk)
         begin
             ID_EX_Inst=IF_ID_Inst;
             ID_EX_rs1=IF_ID_rs1;
@@ -56,26 +74,6 @@ module ID_IX(clk,reset,IF_ID_Inst, IF_ID_rs1,IF_ID_rs2, IF_ID_rd,  IF_ID_PC_Out,
             ID_EX_MemWrite=IF_ID_MemWrite;
             ID_EX_RegWrite=IF_ID_RegWrite;
             ID_EX_MemtoReg=IF_ID_MemtoReg;
-          
-        end
-      else if (reset==1)
-        begin
-            ID_EX_Inst=0;
-            ID_EX_rs1=0;
-            ID_EX_rs2=0;
-            ID_EX_imm_data=0;
-            ID_EX_ReadData2=0;
-            ID_EX_ReadData1=0;
-            ID_EX_PC_Out=0;
-            ID_EX_ALUsrc=0;
-            ID_EX_ALUop=0;
-            ID_EX_Branch=0;
-            ID_EX_MemRead=0;
-            ID_EX_MemWrite=0;
-            ID_EX_RegWrite=0;
-            ID_EX_MemtoReg=0;
-          
-          
         end
       
     end
