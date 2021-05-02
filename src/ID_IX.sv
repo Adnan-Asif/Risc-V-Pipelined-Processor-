@@ -21,21 +21,21 @@ module ID_IX(clk,reset,IF_ID_Inst, IF_ID_rs1,IF_ID_rs2, IF_ID_rd,  IF_ID_PC_Out,
   
   
   
-  output [3:0] ID_EX_Inst;
-  output [4:0] ID_EX_rs1;
-  output [4:0] ID_EX_rs2;
-  output [4:0] ID_EX_rd;
-  output [63:0] ID_EX_imm_data;
-  output [63:0] ID_EX_ReadData2;
-  output [63:0] ID_EX_ReadData1;
-  output [63:0] ID_EX_PC_Out;
-  output ID_EX_ALUsrc;
-  output [1:0] ID_EX_ALUop;
-  output ID_EX_Branch;
-  output ID_EX_MemRead;
-  output ID_EX_MemWrite;
-  output ID_EX_RegWrite;
-  output ID_EX_MemtoReg;
+  output reg [3:0] ID_EX_Inst;
+  output reg [4:0] ID_EX_rs1;
+  output reg [4:0] ID_EX_rs2;
+  output reg [4:0] ID_EX_rd;
+  output reg [63:0] ID_EX_imm_data;
+  output reg [63:0] ID_EX_ReadData2;
+  output reg [63:0] ID_EX_ReadData1;
+  output reg [63:0] ID_EX_PC_Out;
+  output reg ID_EX_ALUsrc;
+  output reg [1:0] ID_EX_ALUop;
+  output reg ID_EX_Branch;
+  output reg ID_EX_MemRead;
+  output reg ID_EX_MemWrite;
+  output reg ID_EX_RegWrite;
+  output reg ID_EX_MemtoReg;
 
   
   always @(reset or posedge clk)
