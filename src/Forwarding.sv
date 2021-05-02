@@ -5,8 +5,8 @@ module Forwarding(
   input  MEM_WB_RegWrite, //WB of MEM_WB
   input [4:0] ID_EX_rs1,
   input [4:0] ID_EX_rs2,
-  output [1:0] forwardA,
-  output [1:0] forwardB,
+  output reg [1:0] forwardA,
+  output reg [1:0] forwardB,
 );
   
   
