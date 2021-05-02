@@ -171,6 +171,8 @@ module top(clk,reset);
               MEM_WB_rd, MEM_WB_mux_ALU, MEM_WB_readData, MEM_WB_RegWrite, MEM_WB_MemtoReg);
   
   MUX xd (MEM_WB_mux_ALU, MEM_WB_readData, MEM_WB_MemtoReg, MEM_WB_mux);
+  Forwarding forward(EX_MEM_rd, EX_MEM_RegWrite,MEM_WB_rd, MEM_WB_RegWrite, ID_EX_rs1, ID_EX_rs2,ForwardA, ForwardB);
+   
   
 endmodule
 
